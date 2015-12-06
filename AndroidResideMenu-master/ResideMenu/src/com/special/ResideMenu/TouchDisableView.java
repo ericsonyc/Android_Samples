@@ -1,7 +1,6 @@
 package com.special.ResideMenu;
 
 
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -31,7 +30,7 @@ class TouchDisableView extends ViewGroup {
             this.removeView(mContent);
         }
         mContent = v;
-        addView(mContent);
+        this.addView(mContent);
     }
 
     public View getContent() {

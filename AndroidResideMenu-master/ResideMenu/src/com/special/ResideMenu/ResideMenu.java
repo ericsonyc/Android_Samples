@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.*;
 import android.view.animation.AnimationUtils;
-import android.widget.*;
-
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -26,6 +28,8 @@ import java.util.List;
  * Mail: specialcyci@gmail.com
  */
 public class ResideMenu extends FrameLayout {
+
+    private String TAG = "ResideMenu";
 
     public static final int DIRECTION_LEFT = 0;
     public static final int DIRECTION_RIGHT = 1;
@@ -77,7 +81,8 @@ public class ResideMenu extends FrameLayout {
 
     public ResideMenu(Context context) {
         super(context);
-        initViews(context, -1, -1);
+        Log.i(TAG, "ResideMenu Constructor");
+        initViews(context, -1, -1);//initialize views
     }
 
     /**
@@ -96,6 +101,7 @@ public class ResideMenu extends FrameLayout {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.residemenu_custom, this);
+        Log.i(TAG, "ResideMenu initViews");
 
         if (customLeftMenuId >= 0) {
             scrollViewLeftMenu = inflater.inflate(customLeftMenuId, this, false);

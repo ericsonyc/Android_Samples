@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
-public class MenuActivity extends FragmentActivity implements View.OnClickListener{
+public class MenuActivity extends FragmentActivity implements View.OnClickListener {
 
     private ResideMenu resideMenu;
     private MenuActivity mContext;
@@ -28,7 +28,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.main);
         mContext = this;
         setUpMenu();
-        if( savedInstanceState == null )
+        if (savedInstanceState == null)
             changeFragment(new HomeFragment());
     }
 
@@ -47,27 +47,27 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         // attach to current activity;
         resideMenu = new ResideMenu(this);
         resideMenu.setUse3D(true);
-        resideMenu.setBackground(R.drawable.menu_background);
+        resideMenu.setBackground(R.drawable.sunset);
         resideMenu.attachToActivity(this);
         resideMenu.setMenuListener(menuListener);
-        //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip. 
-        resideMenu.setScaleValue(0.6f);
+        //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
+        resideMenu.setScaleValue(0.7f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
-        itemProfile  = new ResideMenuItem(this, R.drawable.icon_profile,  "Profile");
-        itemCalendar = new ResideMenuItem(this, R.drawable.icon_calendar, "Calendar");
-        itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Settings");
+//        itemHome = new ResideMenuItem(this, R.drawable.icon_home, "Home");
+//        itemProfile = new ResideMenuItem(this, R.drawable.icon_profile, "Profile");
+//        itemCalendar = new ResideMenuItem(this, R.drawable.icon_calendar, "Calendar");
+//        itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Settings");
 
-        itemHome.setOnClickListener(this);
-        itemProfile.setOnClickListener(this);
-        itemCalendar.setOnClickListener(this);
-        itemSettings.setOnClickListener(this);
+//        itemHome.setOnClickListener(this);
+//        itemProfile.setOnClickListener(this);
+//        itemCalendar.setOnClickListener(this);
+//        itemSettings.setOnClickListener(this);
 
-        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemProfile, ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
-        resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
+//        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
+//        resideMenu.addMenuItem(itemProfile, ResideMenu.DIRECTION_LEFT);
+//        resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
+//        resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
 
         // You can disable a direction by setting ->
         // resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
@@ -94,13 +94,13 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
 
-        if (view == itemHome){
+        if (view == itemHome) {
             changeFragment(new HomeFragment());
-        }else if (view == itemProfile){
+        } else if (view == itemProfile) {
             changeFragment(new ProfileFragment());
-        }else if (view == itemCalendar){
+        } else if (view == itemCalendar) {
             changeFragment(new CalendarFragment());
-        }else if (view == itemSettings){
+        } else if (view == itemSettings) {
             changeFragment(new SettingsFragment());
         }
 
@@ -110,16 +110,17 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
         @Override
         public void openMenu() {
-            Toast.makeText(mContext, "Menu is opened!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mContext, "Menu is opened!", Toast.LENGTH_SHORT).show();
+//            resideMenu.getBackground().setAlpha(50);
         }
 
         @Override
         public void closeMenu() {
-            Toast.makeText(mContext, "Menu is closed!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mContext, "Menu is closed!", Toast.LENGTH_SHORT).show();
         }
     };
 
-    private void changeFragment(Fragment targetFragment){
+    private void changeFragment(Fragment targetFragment) {
         resideMenu.clearIgnoredViewList();
         getSupportFragmentManager()
                 .beginTransaction()
@@ -129,7 +130,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     }
 
     // What good method is to access resideMenu？
-    public ResideMenu getResideMenu(){
+    public ResideMenu getResideMenu() {
         return resideMenu;
     }
 }
