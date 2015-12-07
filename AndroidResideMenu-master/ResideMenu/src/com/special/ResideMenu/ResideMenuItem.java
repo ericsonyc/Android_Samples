@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.special.ResideMenu.R;
 
 /**
  * User: special
@@ -28,15 +27,18 @@ public class ResideMenuItem extends LinearLayout{
     public ResideMenuItem(Context context, int icon, int title) {
         super(context);
         initViews(context);
-        iv_icon.setImageResource(icon);
-        tv_title.setText(title);
+//        iv_icon.setImageResource(icon);
+//        tv_title.setText(title);
+        this.setIcon(icon);
+        this.setTitle(title);
     }
 
     public ResideMenuItem(Context context, int icon, String title) {
         super(context);
         initViews(context);
-        iv_icon.setImageResource(icon);
-        tv_title.setText(title);
+        this.setIcon(icon);
+        this.setTitle(title);
+//        tv_title.setText(title);
     }
 
     private void initViews(Context context){

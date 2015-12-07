@@ -3,6 +3,7 @@ package com.special.ResideMenu;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
  * Created by thonguyen on 15/4/14.
  */
 class TouchDisableView extends ViewGroup {
+
+    private static final String TAG = "TouchDisableView";
 
     private View mContent;
 
@@ -40,6 +43,8 @@ class TouchDisableView extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
+        Log.i(TAG, "onMeasure:widthMeasureSpec:" + widthMeasureSpec + " heightMeasureSpec:" + heightMeasureSpec);
+
         int width = getDefaultSize(0, widthMeasureSpec);
         int height = getDefaultSize(0, heightMeasureSpec);
         setMeasuredDimension(width, height);
@@ -51,6 +56,7 @@ class TouchDisableView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        Log.i(TAG, "onLayout:l:" + l + " t:" + t + " r:" + r + " b:" + b);
         final int width = r - l;
         final int height = b - t;
         mContent.layout(0, 0, width, height);
@@ -58,6 +64,7 @@ class TouchDisableView extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.i(TAG, "onInterceptTouchEvent");
         return mTouchDisabled;
     }
 
