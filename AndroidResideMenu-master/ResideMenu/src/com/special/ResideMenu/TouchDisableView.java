@@ -2,8 +2,6 @@ package com.special.ResideMenu;
 
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -66,6 +64,11 @@ class TouchDisableView extends ViewGroup {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Log.i(TAG, "TouchDisableView:onInterceptTouchEvent");
         return mTouchDisabled;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 
     void setTouchDisable(boolean disableTouch) {

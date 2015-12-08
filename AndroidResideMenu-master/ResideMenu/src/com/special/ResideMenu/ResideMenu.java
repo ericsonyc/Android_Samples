@@ -505,7 +505,7 @@ public class ResideMenu extends FrameLayout {
             scaleDown.playTogether(ObjectAnimator.ofFloat(target, "rotationY", angle));
         }
 
-        scaleDown.setInterpolator(AnimationUtils.loadInterpolator(activity, android.R.anim.decelerate_interpolator));
+        scaleDown.setInterpolator(AnimationUtils.loadInterpolator(this.activity,android.R.anim.decelerate_interpolator));
         scaleDown.setDuration(250);
         return scaleDown;
     }
