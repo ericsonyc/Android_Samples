@@ -10,8 +10,6 @@ import android.view.View;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
-import java.util.Set;
-
 public class MenuActivity extends FragmentActivity implements View.OnClickListener {
 
     public static final String TAG = "MenuActivity";
@@ -103,8 +101,10 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.i(TAG, "MenuActivity:dispatchTouchEvent:");
-        return resideMenu.dispatchTouchEvent(ev);
-//        return super.dispatchTouchEvent(ev);
+//        return resideMenu.dispatchTouchEvent(ev);
+        boolean flag = super.dispatchTouchEvent(ev);
+        Log.i(TAG, "flag:" + flag);
+        return flag;
     }
 
     @Override

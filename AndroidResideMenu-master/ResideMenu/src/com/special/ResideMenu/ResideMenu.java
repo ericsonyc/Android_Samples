@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -206,7 +205,7 @@ public class ResideMenu extends FrameLayout {
         viewDecor.removeViewAt(0);
         Log.i(TAG, "ResideMenu:viewCount:" + viewDecor.getChildCount());
         viewActivity.setContent(mContent);
-        addView(viewActivity);
+        this.addView(viewActivity);
 
         ViewGroup parent = (ViewGroup) scrollViewLeftMenu.getParent();
         parent.removeView(scrollViewLeftMenu);
@@ -497,8 +496,8 @@ public class ResideMenu extends FrameLayout {
         Log.i(TAG, "ResideMenu:buildScaleDownAnimation:");
         AnimatorSet scaleDown = new AnimatorSet();
         scaleDown.playTogether(
-                ObjectAnimator.ofFloat(target, "scaleX", targetScaleX),
-                ObjectAnimator.ofFloat(target, "scaleY", targetScaleY)
+                ObjectAnimator.ofFloat(target, "scaleX", 0, targetScaleX),
+                ObjectAnimator.ofFloat(target, "scaleY", 0, targetScaleY)
         );
 
         if (mUse3D) {
