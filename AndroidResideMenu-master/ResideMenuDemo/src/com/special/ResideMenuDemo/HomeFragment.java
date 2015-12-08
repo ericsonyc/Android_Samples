@@ -2,6 +2,7 @@ package com.special.ResideMenuDemo;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,14 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i(MenuActivity.TAG, "HomeFragment:onCreateView:");
         parentView = inflater.inflate(R.layout.home, container, false);
         setUpViews();
         return parentView;
     }
 
     private void setUpViews() {
+        Log.i(MenuActivity.TAG, "HomeFragment:setUpViews:");
         MenuActivity parentActivity = (MenuActivity) getActivity();
         resideMenu = parentActivity.getResideMenu();
 

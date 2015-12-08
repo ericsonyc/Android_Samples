@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
+import java.util.Set;
+
 public class MenuActivity extends FragmentActivity implements View.OnClickListener {
+
+    public static final String TAG = "MenuActivity";
 
     private ResideMenu resideMenu;
     private MenuActivity mContext;
@@ -24,26 +28,36 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "MenuActivity:onCreate:");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         mContext = this;
         setUpMenu();
-        if (savedInstanceState == null)
-            changeFragment(new HomeFragment());
+//        if (savedInstanceState == null || savedInstanceState.isEmpty()) {
+//            Log.i(TAG, "saveInstanceState is empty.");
+//            changeFragment(new HomeFragment());
+//        } else {
+//            Set<String> sets = savedInstanceState.keySet();
+//            for (String str : sets) {
+//                Log.i(TAG, "Bundle:" + str);
+//            }
+//        }
     }
 
     @Override
     protected void onStart() {
+        Log.i(TAG, "MenuActivity:onStart:");
         super.onStart();
     }
 
     @Override
     protected void onResume() {
+        Log.i(TAG, "MenuActivity:onResume:");
         super.onResume();
     }
 
     private void setUpMenu() {
-
+        Log.i(TAG, "MenuActivity:setUpMenu:");
         // attach to current activity;
         resideMenu = new ResideMenu(this);
         resideMenu.setUse3D(true);
@@ -88,12 +102,14 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.i(TAG, "MenuActivity:dispatchTouchEvent:");
         return resideMenu.dispatchTouchEvent(ev);
+//        return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public void onClick(View view) {
-
+        Log.i(TAG, "MenuActivity:onClick:");
         if (view == itemHome) {
             changeFragment(new HomeFragment());
         } else if (view == itemProfile) {
@@ -121,6 +137,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     };
 
     private void changeFragment(Fragment targetFragment) {
+        Log.i(TAG, "MenuActivity:changeFragment");
         resideMenu.clearIgnoredViewList();
         getSupportFragmentManager()
                 .beginTransaction()
@@ -131,6 +148,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
 
     // What good method is to access resideMenu？
     public ResideMenu getResideMenu() {
+        Log.i(TAG, "MenuActivity:getResideMenu:");
         return resideMenu;
     }
 }

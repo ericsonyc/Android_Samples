@@ -2,6 +2,8 @@ package com.special.ResideMenu;
 
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -13,7 +15,7 @@ import android.view.ViewGroup;
  */
 class TouchDisableView extends ViewGroup {
 
-    private static final String TAG = "TouchDisableView";
+    private static final String TAG = "MenuActivity";
 
     private View mContent;
 
@@ -42,9 +44,7 @@ class TouchDisableView extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
-        Log.i(TAG, "onMeasure:widthMeasureSpec:" + widthMeasureSpec + " heightMeasureSpec:" + heightMeasureSpec);
-
+        Log.i(TAG, "TouchDisableView:onMeasure");
         int width = getDefaultSize(0, widthMeasureSpec);
         int height = getDefaultSize(0, heightMeasureSpec);
         setMeasuredDimension(width, height);
@@ -56,15 +56,15 @@ class TouchDisableView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        Log.i(TAG, "onLayout:l:" + l + " t:" + t + " r:" + r + " b:" + b);
-        final int width = r - l;
-        final int height = b - t;
+        Log.i(TAG, "TouchDisableView:onLayout");
+        final int width = (r - l);
+        final int height = (b - t);
         mContent.layout(0, 0, width, height);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Log.i(TAG, "onInterceptTouchEvent");
+        Log.i(TAG, "TouchDisableView:onInterceptTouchEvent");
         return mTouchDisabled;
     }
 
