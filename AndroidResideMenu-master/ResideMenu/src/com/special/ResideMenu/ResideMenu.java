@@ -30,6 +30,7 @@ import java.util.List;
 public class ResideMenu extends FrameLayout {
 
     private String TAG = "MenuActivity";
+    private String TAG1 = "ResideMenu";
 
     public static final int DIRECTION_LEFT = 0;
     public static final int DIRECTION_RIGHT = 1;
@@ -505,7 +506,7 @@ public class ResideMenu extends FrameLayout {
             scaleDown.playTogether(ObjectAnimator.ofFloat(target, "rotationY", angle));
         }
 
-        scaleDown.setInterpolator(AnimationUtils.loadInterpolator(this.activity,android.R.anim.decelerate_interpolator));
+        scaleDown.setInterpolator(AnimationUtils.loadInterpolator(this.activity, android.R.anim.decelerate_interpolator));
         scaleDown.setDuration(250);
         return scaleDown;
     }
@@ -617,19 +618,24 @@ public class ResideMenu extends FrameLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.i(TAG, "ResideMenu:dispatchTouchEvent");
+        Log.i(TAG1, "start");
         float currentActivityScaleX = ViewHelper.getScaleX(viewActivity);
+        Log.i(TAG1, "currentActivityScaleX:" + currentActivityScaleX);
         if (currentActivityScaleX == 1.0f)
             setScaleDirectionByRawX(ev.getRawX());
 
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                Log.i(TAG1, "action_down");
                 lastActionDownX = ev.getX();
                 lastActionDownY = ev.getY();
+                Log.i(TAG1, "lastx,y:" + lastActionDownX + "," + lastActionDownY);
                 isInIgnoredView = isInIgnoredView(ev) && !isOpened();
                 pressedState = PRESSED_DOWN;
                 break;
 
             case MotionEvent.ACTION_MOVE:
+                Log.i(TAG1, "action_move");
                 if (isInIgnoredView || isInDisableDirection(scaleDirection))
                     break;
 
@@ -676,7 +682,7 @@ public class ResideMenu extends FrameLayout {
                 break;
 
             case MotionEvent.ACTION_UP:
-
+                Log.i(TAG1, "action_up");
                 if (isInIgnoredView) break;
                 if (pressedState != PRESSED_MOVE_HORIZONTAL) break;
 
