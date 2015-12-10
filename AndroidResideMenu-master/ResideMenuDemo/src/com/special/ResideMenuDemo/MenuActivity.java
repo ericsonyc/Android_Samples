@@ -10,6 +10,8 @@ import android.view.View;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
+import java.util.Set;
+
 public class MenuActivity extends FragmentActivity implements View.OnClickListener {
 
     public static final String TAG = "MenuActivity";
@@ -31,15 +33,15 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.main);
         mContext = this;
         setUpMenu();
-//        if (savedInstanceState == null || savedInstanceState.isEmpty()) {
-//            Log.i(TAG, "saveInstanceState is empty.");
-//            changeFragment(new HomeFragment());
-//        } else {
-//            Set<String> sets = savedInstanceState.keySet();
-//            for (String str : sets) {
-//                Log.i(TAG, "Bundle:" + str);
-//            }
-//        }
+        if (savedInstanceState == null || savedInstanceState.isEmpty()) {
+            Log.i(TAG, "saveInstanceState is empty.");
+            changeFragment(new HomeFragment());
+        } else {
+            Set<String> sets = savedInstanceState.keySet();
+            for (String str : sets) {
+                Log.i(TAG, "Bundle:" + str);
+            }
+        }
     }
 
     @Override
@@ -66,23 +68,23 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.setScaleValue(0.7f);
 
         // create menu items;
-//        itemHome = new ResideMenuItem(this, R.drawable.icon_home, "Home");
-//        itemProfile = new ResideMenuItem(this, R.drawable.icon_profile, "Profile");
-//        itemCalendar = new ResideMenuItem(this, R.drawable.icon_calendar, "Calendar");
-//        itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Settings");
+        itemHome = new ResideMenuItem(this, R.drawable.icon_home, "Home");
+        itemProfile = new ResideMenuItem(this, R.drawable.icon_profile, "Profile");
+        itemCalendar = new ResideMenuItem(this, R.drawable.icon_calendar, "Calendar");
+        itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Settings");
 
-//        itemHome.setOnClickListener(this);
-//        itemProfile.setOnClickListener(this);
-//        itemCalendar.setOnClickListener(this);
-//        itemSettings.setOnClickListener(this);
+        itemHome.setOnClickListener(this);
+        itemProfile.setOnClickListener(this);
+        itemCalendar.setOnClickListener(this);
+        itemSettings.setOnClickListener(this);
 
-//        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
-//        resideMenu.addMenuItem(itemProfile, ResideMenu.DIRECTION_LEFT);
-//        resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
-//        resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemProfile, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
 
         // You can disable a direction by setting ->
-        // resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
+//         resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 
         findViewById(R.id.title_bar_left_menu).setOnClickListener(new View.OnClickListener() {
             @Override

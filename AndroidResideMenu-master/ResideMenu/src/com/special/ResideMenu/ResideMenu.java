@@ -631,6 +631,7 @@ public class ResideMenu extends FrameLayout {
                 lastActionDownY = ev.getY();
                 Log.i(TAG1, "lastx,y:" + lastActionDownX + "," + lastActionDownY);
                 isInIgnoredView = isInIgnoredView(ev) && !isOpened();
+                Log.i(TAG1, "isIngnoredView:" + isInIgnoredView);
                 pressedState = PRESSED_DOWN;
                 break;
 
@@ -638,29 +639,40 @@ public class ResideMenu extends FrameLayout {
                 Log.i(TAG1, "action_move");
                 if (isInIgnoredView || isInDisableDirection(scaleDirection))
                     break;
-
+                Log.i(TAG1, "isIngnoreView1");
                 if (pressedState != PRESSED_DOWN &&
                         pressedState != PRESSED_MOVE_HORIZONTAL)
                     break;
 
+                Log.i(TAG1, "pressedState");
+
                 int xOffset = (int) (ev.getX() - lastActionDownX);
                 int yOffset = (int) (ev.getY() - lastActionDownY);
 
+                Log.i(TAG1, "xOffset:" + xOffset + ",yOffset:" + yOffset);
+
                 if (pressedState == PRESSED_DOWN) {
+                    Log.i(TAG1, "pressed_down");
                     if (yOffset > 25 || yOffset < -25) {
                         pressedState = PRESSED_MOVE_VERTICAL;
                         break;
                     }
+                    Log.i(TAG1, "pressedState1:" + pressedState);
                     if (xOffset < -50 || xOffset > 50) {
                         pressedState = PRESSED_MOVE_HORIZONTAL;
                         ev.setAction(MotionEvent.ACTION_CANCEL);
                     }
+                    Log.i(TAG1, "pressedState2:" + pressedState);
                 } else if (pressedState == PRESSED_MOVE_HORIZONTAL) {
-                    if (currentActivityScaleX < 0.95)
+                    Log.i(TAG1, "pressed_move_horizontal");
+                    if (currentActivityScaleX < 0.95) {
+                        Log.i(TAG1, "currentActivityScaleX:" + currentActivityScaleX);
                         showScrollViewMenu(scrollViewMenu);
+                    }
 
                     float targetScale = getTargetScale(ev.getRawX());
                     if (mUse3D) {
+                        Log.i(TAG1, "muse3d");
                         int angle = scaleDirection == DIRECTION_LEFT ? -ROTATE_Y_ANGLE : ROTATE_Y_ANGLE;
                         angle *= (1 - targetScale) * 2;
                         ViewHelper.setRotationY(viewActivity, angle);
@@ -676,6 +688,7 @@ public class ResideMenu extends FrameLayout {
                     ViewHelper.setAlpha(scrollViewMenu, (1 - targetScale) * 2.0f);
 
                     lastRawX = ev.getRawX();
+                    Log.i(TAG1, "lastRawX:" + lastRawX);
                     return true;
                 }
 
@@ -686,13 +699,17 @@ public class ResideMenu extends FrameLayout {
                 if (isInIgnoredView) break;
                 if (pressedState != PRESSED_MOVE_HORIZONTAL) break;
 
+                Log.i(TAG1, "pressedState:" + pressedState);
+
                 pressedState = PRESSED_DONE;
                 if (isOpened()) {
+                    Log.i(TAG1, "isopened:" + currentActivityScaleX);
                     if (currentActivityScaleX > 0.56f)
                         closeMenu();
                     else
                         openMenu(scaleDirection);
                 } else {
+                    Log.i(TAG1, "!isopened:" + currentActivityScaleX);
                     if (currentActivityScaleX < 0.94f) {
                         openMenu(scaleDirection);
                     } else {
