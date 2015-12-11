@@ -16,15 +16,12 @@
             android:layout_gravity="bottom">
         <ListView android:id="@id/drawerContent"
                   android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-
-        />
+                  android:layout_height="wrap_content"/>
         <TextView
                 android:id="@id/drawerHandle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/handle_up"
-        />
+                android:background="@drawable/handle_up"/>
 
     </cn.waps.extend.SlideWallDrawer>
 

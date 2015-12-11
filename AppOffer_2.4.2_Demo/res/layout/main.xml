@@ -9,16 +9,14 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center_horizontal"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+            xmlns:android="http://schemas.android.com/apk/res/android">
 
         <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:id="@+id/linearLayout"
-                android:layout_alignParentTop="true"
-        >
+                android:layout_alignParentTop="true">
             <LinearLayout
                     android:id="@+id/miniAdLinearLayout"
                     android:layout_width="fill_parent"
@@ -48,8 +46,7 @@
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-            >
+                    android:gravity="center_horizontal">
                 <Button
                         android:id="@+id/OffersButton"
                         android:text="@string/offerList"
@@ -71,15 +68,13 @@
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-            >
+                    android:gravity="center_horizontal">
 
                 <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:layout_weight="1"
-                >
+                        android:layout_weight="1">
                     <Button
                             android:id="@+id/appOffersButton"
                             android:text="@string/appOfferList"
@@ -109,8 +104,7 @@
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-            >
+                    android:gravity="center_horizontal">
                 <Button
                         android:id="@+id/diyAdListButton"
                         android:text="@string/diyAdList"
@@ -131,8 +125,7 @@
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-            >
+                    android:gravity="center_horizontal">
                 <Button
                         android:id="@+id/spendButton"
                         android:text="@string/spendPoints"
@@ -153,8 +146,7 @@
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-            >
+                    android:gravity="center_horizontal">
                 <Button
                         android:id="@+id/moreAppsButton"
                         android:text="@string/moreApps"
@@ -176,8 +168,7 @@
             <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-            >
+                    android:gravity="center_horizontal">
                 <Button
                         android:id="@+id/feedbackButton"
                         android:text="@string/feedback"
@@ -210,6 +201,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:orientation="horizontal"
                 android:layout_below="@id/RelativeLayout01"/>
 
     </RelativeLayout>

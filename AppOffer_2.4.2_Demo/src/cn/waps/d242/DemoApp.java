@@ -88,34 +88,34 @@ public class DemoApp extends Activity implements View.OnClickListener, UpdatePoi
         SDKVersionView = (TextView) findViewById(R.id.SDKVersionView);
 
         // 预加载自定义广告内容（仅在使用了自定义广告、抽屉广告或迷你广告的情况，才需要添加）
-        AppConnect.getInstance(this).initAdInfo();
+//        AppConnect.getInstance(this).initAdInfo();
 
         // 预加载插屏广告内容（仅在使用到插屏广告的情况，才需要添加）
-        AppConnect.getInstance(this).initPopAd(this);
+//        AppConnect.getInstance(this).initPopAd(this);
 
         // 设置插屏广告展示时，可使用设备的back键进行关闭
         // 设置为true表示可通过back键关闭，不调用该句代码则使用默认值false
         // AppConnect.getInstance(this).setPopAdBack(true);
 
         // 预加载功能广告内容（仅在使用到功能广告的情况，才需要添加）
-        AppConnect.getInstance(this).initFunAd(this);
+//        AppConnect.getInstance(this).initFunAd(this);
 
         // 带有默认参数值的在线配置，使用此方法，程序第一次启动使用的是"defaultValue"，之后再启动则是使用的服务器端返回的参数值
-        String showAd = AppConnect.getInstance(this).getConfig("showAd", "defaultValue");
+//        String showAd = AppConnect.getInstance(this).getConfig("showAd", "defaultValue");
 
-        SDKVersionView.setText("在线参数:showAd = " + showAd);
+//        SDKVersionView.setText("在线参数:showAd = " + showAd);
 
-        SDKVersionView.setText(SDKVersionView.getText() + "\nSDK版本: " + AppConnect.LIBRARY_VERSION_NUMBER);
+//        SDKVersionView.setText(SDKVersionView.getText() + "\nSDK版本: " + AppConnect.LIBRARY_VERSION_NUMBER);
 
         // 设置互动广告无数据时的回调监听（该方法必须在showBannerAd之前调用）
-        AppConnect.getInstance(this).setBannerAdNoDataListener(new AppListener() {
-
-            @Override
-            public void onBannerNoData() {
-                Log.i("debug", "banner广告暂无可用数据");
-            }
-
-        });
+//        AppConnect.getInstance(this).setBannerAdNoDataListener(new AppListener() {
+//
+//            @Override
+//            public void onBannerNoData() {
+//                Log.i("debug", "banner广告暂无可用数据");
+//            }
+//
+//        });
         // 互动广告调用方式
         LinearLayout layout = (LinearLayout) this.findViewById(R.id.AdLinearLayout);
         AppConnect.getInstance(this).showBannerAd(this, layout);
@@ -124,28 +124,28 @@ public class DemoApp extends Activity implements View.OnClickListener, UpdatePoi
         // AppConnect.getInstance(this).setAdBackColor(Color.argb(50, 120, 240,
         // 120));//设置迷你广告背景颜色
         // AppConnect.getInstance(this).setAdForeColor(Color.YELLOW);//设置迷你广告文字颜色
-        LinearLayout miniLayout = (LinearLayout) findViewById(R.id.miniAdLinearLayout);
-        AppConnect.getInstance(this).showMiniAd(this, miniLayout, 10);// 10秒刷新一次
+//        LinearLayout miniLayout = (LinearLayout) findViewById(R.id.miniAdLinearLayout);
+//        AppConnect.getInstance(this).showMiniAd(this, miniLayout, 10);// 10秒刷新一次
 
         // 抽屉式应用墙
         // 1,将drawable-hdpi文件夹中的图片全部拷贝到新工程的drawable-hdpi文件夹中
         // 2,将layout文件夹中的detail.xml和slidewall.xml两个文件，拷贝到新工程的layout文件夹中
         // 获取抽屉样式的自定义广告
-        slidingDrawerView = SlideWall.getInstance().getView(this);
-        if (slidingDrawerView != null) {
-            this.addContentView(slidingDrawerView, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-        }
+//        slidingDrawerView = SlideWall.getInstance().getView(this);
+//        if (slidingDrawerView != null) {
+//            this.addContentView(slidingDrawerView, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+//        }
 
         // 初始化卸载广告
         // AppConnect.getInstance(this).initUninstallAd(this);
 
         // 该方法用于获取当前应用的签名md5值，微信平台创建应用时需要用到该值
         // 使用该方法生成签名md5值时，必须确保使用的签名为正式发布的apk所使用的签名
-        String sign = AppConnect.getInstance(this).getSignatureMd5(this);
-        Log.e("debug", "sign =" + sign);
+//        String sign = AppConnect.getInstance(this).getSignatureMd5(this);
+//        Log.e("debug", "sign =" + sign);
 
         // 设置微信平台的AppId，若不适用微信、朋友圈进行分析，则不需要设置
-        AppConnect.getInstance(this).setWeixinAppId("wx1e1c162350c09c66", this);
+//        AppConnect.getInstance(this).setWeixinAppId("wx1e1c162350c09c66", this);
 
     }
 
