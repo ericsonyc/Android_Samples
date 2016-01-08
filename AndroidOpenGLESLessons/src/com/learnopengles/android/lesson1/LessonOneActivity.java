@@ -23,7 +23,7 @@ public class LessonOneActivity extends Activity {
         // Check if the system supports OpenGL ES 2.0.
         final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
-        final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000 || Build.FINGERPRINT.startsWith("generic");
+        final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000 || Build.FINGERPRINT.startsWith("generic");//保证在模拟器上运行opengl，在真机上运行opengl不需要该代码
 
         if (supportsEs2) {
             // Request an OpenGL ES 2.0 compatible context.

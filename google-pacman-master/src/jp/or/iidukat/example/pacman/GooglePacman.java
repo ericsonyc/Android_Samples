@@ -1,11 +1,5 @@
 package jp.or.iidukat.example.pacman;
 
-import android.app.Activity;
-import android.media.AudioManager;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 public class GooglePacman extends Activity implements OnClickListener {
 
     private PacmanGame game;

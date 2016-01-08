@@ -7,7 +7,7 @@
     <application android:icon="@drawable/icon"
                  android:label="@string/app_name"
                  android:theme="@android:style/Theme.NoTitleBar">
-        <activity android:name="GooglePacman"
+        <activity android:name=".GooglePacman"
                   android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
