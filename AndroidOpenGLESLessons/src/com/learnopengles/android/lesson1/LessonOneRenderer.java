@@ -42,6 +42,7 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
     /**
      * Store our model data in a float buffer.
      */
+    //保存三个三角形顶点的坐标
     private final FloatBuffer mTriangle1Vertices;
     private final FloatBuffer mTriangle2Vertices;
     private final FloatBuffer mTriangle3Vertices;
@@ -152,17 +153,17 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 glUnused, EGLConfig config) {
         // Set the background clear color to gray.
-        GLES20.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
+        GLES20.glClearColor(0f, 0f, 1f, 0.5f);
 
         // Position the eye behind the origin.
         final float eyeX = 0.0f;
         final float eyeY = 0.0f;
-        final float eyeZ = 1.5f;
+        final float eyeZ = -1.5f;
 
         // We are looking toward the distance
         final float lookX = 0.0f;
         final float lookY = 0.0f;
-        final float lookZ = -5.0f;
+        final float lookZ = 5.0f;
 
         // Set our up vector. This is where our head would be pointing were we holding the camera.
         final float upX = 0.0f;
@@ -177,7 +178,8 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
         final String vertexShader =
                 "uniform mat4 u_MVPMatrix;      \n"        // A constant representing the combined model/view/projection matrix.
 
-                        + "attribute vec4 a_Position;     \n"        // Per-vertex position information we will pass in.
+                        + "attribute vec4 a_Position;     \n"        // Per-ve
+                        // rtex position information we will pass in.
                         + "attribute vec4 a_Color;        \n"        // Per-vertex color information we will pass in.
 
                         + "varying vec4 v_Color;          \n"        // This will be passed into the fragment shader.
@@ -191,7 +193,7 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
                         + "}                              \n";    // normalized screen coordinates.
 
         final String fragmentShader =
-                "precision mediump float;       \n"        // Set the default precision to medium. We don't need as high of a
+                "precision highp float;       \n"        // Set the default precision to medium. We don't need as high of a
                         // precision in the fragment shader.
                         + "varying vec4 v_Color;          \n"        // This is the color from the vertex shader interpolated across the
                         // triangle per fragment.
@@ -324,7 +326,7 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
 
         // Draw one translated a bit down and rotated to be flat on the ground.
         Matrix.setIdentityM(mModelMatrix, 0);
-        Matrix.translateM(mModelMatrix, 0, 0.0f, -1.0f, 0.0f);
+        Matrix.translateM(mModelMatrix, 0, 0.0f, 1.0f, 0.0f);
         Matrix.rotateM(mModelMatrix, 0, 90.0f, 1.0f, 0.0f, 0.0f);
         Matrix.rotateM(mModelMatrix, 0, angleInDegrees, 0.0f, 0.0f, 1.0f);
         drawTriangle(mTriangle2Vertices);
