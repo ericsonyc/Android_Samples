@@ -339,6 +339,13 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
         drawTriangle(mTriangle3Vertices);
     }
 
+    public void setCameraRotate(float angleX, float angleY) {
+        if (angleX != 0)
+            Matrix.rotateM(mViewMatrix, 0, angleX, 0.0f, 1.0f, 0.0f);
+        if (angleY != 0)
+            Matrix.rotateM(mViewMatrix, 0, angleY, 1.0f, 0.0f, 0.0f);
+    }
+
     /**
      * Draws a triangle from the given vertex data.
      *
