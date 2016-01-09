@@ -41,9 +41,9 @@ public class LessonOneActivity extends Activity implements View.OnTouchListener 
                 currentX = event.getRawX();
                 currentY = event.getRawY();
                 angleX = currentX - previousX;
-                angleX = (float) (angleX / (Math.PI) * 360);
+//                angleX = (float) (angleX / (Math.PI) * 360);
                 angleY = currentY - previousY;
-                angleY = (float) (angleY / Math.PI * 360);
+//                angleY = (float) (angleY / Math.PI * 360);
                 renderer.setCameraRotate(angleX, angleY);
                 previousX = currentX;
                 previousY = currentY;

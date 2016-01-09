@@ -11,6 +11,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.SystemClock;
+import android.util.Log;
 
 /**
  * This class implements our custom renderer. Note that the GL10 parameter passed in is unused for OpenGL ES 2.0
@@ -91,6 +92,13 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
      * Size of the color data in elements.
      */
     private final int mColorDataSize = 4;
+
+
+    /**
+     * width and height of the screen
+     */
+    private float screenWidth = 0.0f;
+    private float screenHeight = 0.0f;
 
     /**
      * Initialize the model data.
@@ -297,7 +305,8 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
     public void onSurfaceChanged(GL10 glUnused, int width, int height) {
         // Set the OpenGL viewport to the same size as the surface.
         GLES20.glViewport(0, 0, width, height);
-
+        screenWidth = width;
+        screenHeight = height;
         // Create a new perspective projection matrix. The height will stay the same
         // while the width will vary as per aspect ratio.
         final float ratio = (float) width / height;
@@ -313,6 +322,7 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 glUnused) {
+        Log.i(LessonOneActivity.TAG, "onDrawFrame");
         GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
 
         // Do a complete rotation every 10 seconds.
@@ -340,10 +350,19 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
     }
 
     public void setCameraRotate(float angleX, float angleY) {
-        if (angleX != 0)
-            Matrix.rotateM(mViewMatrix, 0, angleX, 0.0f, 1.0f, 0.0f);
-        if (angleY != 0)
+        /**
+         * 没有允许深度测试，所以旋转到遮盖位置会看不到后面的图形
+         */
+        if (angleX != 0) {
+            angleX = angleX / screenWidth * 2;
+            angleX = (float) (angleX / (Math.PI) * 360);
+            Matrix.rotateM(mViewMatrix, 0, -angleX, 0.0f, 1.0f, 0.0f);
+        }
+        if (angleY != 0) {
+            angleY = angleY / screenHeight * 2;
+            angleY = (float) (angleY / Math.PI * 360);
             Matrix.rotateM(mViewMatrix, 0, angleY, 1.0f, 0.0f, 0.0f);
+        }
     }
 
     /**
