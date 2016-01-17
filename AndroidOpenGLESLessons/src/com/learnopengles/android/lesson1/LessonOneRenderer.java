@@ -352,6 +352,7 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer {
     public void setCameraRotate(float angleX, float angleY) {
         /**
          * 没有允许深度测试，所以旋转到遮盖位置会看不到后面的图形
+         * 如果有深度测试，则可以看到后面的图，不过现在还不会深度测试
          */
         if (angleX != 0) {
             angleX = angleX / screenWidth * 2;

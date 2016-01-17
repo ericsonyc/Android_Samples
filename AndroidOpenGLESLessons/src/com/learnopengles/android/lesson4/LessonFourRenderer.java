@@ -162,7 +162,7 @@ public class LessonFourRenderer implements GLSurfaceView.Renderer {
     private int mTextureDataHandle;
 
     /**
-     * Initialize the model data.
+     * Initialize the model data and store the buffer data
      */
     public LessonFourRenderer(final Context activityContext) {
         mActivityContext = activityContext;
@@ -469,7 +469,7 @@ public class LessonFourRenderer implements GLSurfaceView.Renderer {
                 new String[]{"a_Position"});
 
         // Load the texture
-        mTextureDataHandle = TextureHelper.loadTexture(mActivityContext, R.drawable.bumpy_bricks_public_domain);
+        mTextureDataHandle = TextureHelper.loadTexture(mActivityContext, R.drawable.hello);
     }
 
     @Override

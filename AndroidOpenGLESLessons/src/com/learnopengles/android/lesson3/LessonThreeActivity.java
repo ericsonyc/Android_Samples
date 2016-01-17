@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
+import android.os.Build;
 import android.os.Bundle;
 
 public class LessonThreeActivity extends Activity {
@@ -12,6 +13,7 @@ public class LessonThreeActivity extends Activity {
      * Hold a reference to our GLSurfaceView
      */
     private GLSurfaceView mGLSurfaceView;
+    private LessonThreeRenderer renderer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,14 +24,15 @@ public class LessonThreeActivity extends Activity {
         // Check if the system supports OpenGL ES 2.0.
         final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
-        final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000;
+        final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000|| Build.FINGERPRINT.startsWith("generic");
 
         if (supportsEs2) {
             // Request an OpenGL ES 2.0 compatible context.
             mGLSurfaceView.setEGLContextClientVersion(2);
 
+            renderer=new LessonThreeRenderer();
             // Set the renderer to our demo renderer, defined below.
-            mGLSurfaceView.setRenderer(new LessonThreeRenderer());
+            mGLSurfaceView.setRenderer(renderer);
         } else {
             // This is where you could create an OpenGL ES 1.x compatible
             // renderer if you wanted to support both ES 1 and ES 2.

@@ -33,9 +33,7 @@ public class ShaderHelper {
                 GLES20.glDeleteShader(shaderHandle);
                 shaderHandle = 0;
             }
-        }
-
-        if (shaderHandle == 0) {
+        } else {
             throw new RuntimeException("Error creating shader.");
         }
 

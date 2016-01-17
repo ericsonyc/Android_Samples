@@ -372,7 +372,7 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 glUnused, EGLConfig config) {
         // Set the background clear color to black.
-        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        GLES20.glClearColor(0.0f, 1.0f, 1.0f, 0.0f);
 
         // Use culling to remove back faces.
         GLES20.glEnable(GLES20.GL_CULL_FACE);
@@ -474,7 +474,7 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer {
         // Calculate position of the light. Rotate and then push into the distance.
         Matrix.setIdentityM(mLightModelMatrix, 0);
         Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, -5.0f);
-        Matrix.rotateM(mLightModelMatrix, 0, angleInDegrees, 0.0f, 1.0f, 0.0f);
+        Matrix.rotateM(mLightModelMatrix, 0, angleInDegrees, 1.0f, 0.0f, 1.0f);
         Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, 2.0f);
 
         Matrix.multiplyMV(mLightPosInWorldSpace, 0, mLightModelMatrix, 0, mLightPosInModelSpace, 0);
@@ -483,7 +483,7 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer {
         // Draw some cubes.        
         Matrix.setIdentityM(mModelMatrix, 0);
         Matrix.translateM(mModelMatrix, 0, 4.0f, 0.0f, -7.0f);
-        Matrix.rotateM(mModelMatrix, 0, angleInDegrees, 1.0f, 0.0f, 0.0f);
+        Matrix.rotateM(mModelMatrix, 0, angleInDegrees, 0.0f, 1.0f, 0.0f);
         drawCube();
 
         Matrix.setIdentityM(mModelMatrix, 0);
@@ -498,6 +498,7 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer {
 
         Matrix.setIdentityM(mModelMatrix, 0);
         Matrix.translateM(mModelMatrix, 0, 0.0f, -4.0f, -7.0f);
+        Matrix.rotateM(mModelMatrix, 0, angleInDegrees, 1.0f, 0.0f, 1.0f);
         drawCube();
 
         Matrix.setIdentityM(mModelMatrix, 0);
@@ -605,10 +606,8 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer {
                 GLES20.glDeleteShader(shaderHandle);
                 shaderHandle = 0;
             }
-        }
-
-        if (shaderHandle == 0) {
-            throw new RuntimeException("Error creating shader.");
+        } else {
+            throw new RuntimeException("Error creating shader");
         }
 
         return shaderHandle;
