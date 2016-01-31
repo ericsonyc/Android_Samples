@@ -1,0 +1,13 @@
+程序讲解，程序主要分为三个模块：
+  （1）faceDetection.m文件:该文件是main入口，从该文件执行， 该文件主要是main函数，在该函数中主要是读取图片文件，然后执行人脸检测，显示人脸检测图片，最后应用两个算法来生成深度信息，在mainPart函数中用这两个深度信息来生成最终的深度信息。从该文件执行时需要添加目录到MATLAB，或者切换MATLAB执行文件夹，不然目录找不到。
+  （2）elderzucker_tim.m文件：该文件只有一个函数，该函数是Elder-Zucker算法的主要实现函数，运用了边缘检测和模糊估计的算法。
+  （3）huhaan_tim.m文件：该文件也只有一个函数，该函数是Hu-Haan算法的实现函数，主要运用了模糊估计的算法，该文件调用了maxfilt2.m和vanherk.m文件。
+
+程序输入输出：
+  输入：选择一个图片
+
+  输出：在当前目录下输出两个文件，一个是result2D.txt;另一个是result3D.txt。result2D.txt是faces的二维坐标，序号对应图片上的序号；result3D.txt是faces的三维坐标，序号对应图片上的序号。
+
+  程序执行完生成的Figure1是人脸识别的显示图像；Figure2是Elder-Zucker算法的显示图片；Figure3和Figure4是Hu-Haan算法的显示图片；其中Figure4是深度信息。
+
+Elder-Zucker和Hu-Haan算法的实现过程，请参考程序中的详细注释以及文档。
